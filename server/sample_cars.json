@@ -1,0 +1,452 @@
+[
+  {
+    "team": "Arranque",
+    "points_acceleration": 50,
+    "points_top_speed": 10,
+    "points_handling": 15,
+    "points_braking": 15,
+    "points_tires": 10,
+    "acceleration_curve": "low_end_torque",
+    "appearance": {
+      "body": {
+        "color": "#e63946",
+        "front": {
+          "shape": "pointed"
+        },
+        "middle": {
+          "shape": "rect"
+        },
+        "rear": {
+          "shape": "flat"
+        }
+      },
+      "pattern": {
+        "style": "center",
+        "color": "#ffffff"
+      },
+      "number": {
+        "value": 11
+      }
+    }
+  },
+  {
+    "team": "Explosão",
+    "points_acceleration": 45,
+    "points_top_speed": 5,
+    "points_handling": 20,
+    "points_braking": 20,
+    "points_tires": 10,
+    "acceleration_curve": "low_end_torque",
+    "appearance": {
+      "body": {
+        "color": "#f72585",
+        "front": {
+          "shape": "chamfer"
+        },
+        "middle": {
+          "shape": "bulge"
+        },
+        "rear": {
+          "shape": "rounded_corners"
+        }
+      },
+      "pattern": {
+        "style": "side",
+        "color": "#ffd60a"
+      },
+      "number": {
+        "value": 13
+      }
+    }
+  },
+  {
+    "team": "Largada",
+    "points_acceleration": 50,
+    "points_top_speed": 20,
+    "points_handling": 10,
+    "points_braking": 10,
+    "points_tires": 10,
+    "acceleration_curve": "linear",
+    "appearance": {
+      "body": {
+        "color": "#ff6b35",
+        "front": {
+          "shape": "round"
+        },
+        "middle": {
+          "shape": "waisted"
+        },
+        "rear": {
+          "shape": "round"
+        }
+      },
+      "pattern": {
+        "style": "none",
+        "color": "#222222"
+      },
+      "number": {
+        "value": 12
+      }
+    }
+  },
+  {
+    "team": "Âncora",
+    "points_acceleration": 15,
+    "points_top_speed": 30,
+    "points_handling": 0,
+    "points_braking": 50,
+    "points_tires": 5,
+    "acceleration_curve": "top_end_power",
+    "appearance": {
+      "body": {
+        "color": "#8338ec",
+        "front": {
+          "shape": "flat"
+        },
+        "middle": {
+          "shape": "rect"
+        },
+        "rear": {
+          "shape": "chamfer"
+        }
+      },
+      "pattern": {
+        "style": "checker",
+        "color": "#ffffff"
+      },
+      "number": {
+        "value": 41
+      }
+    }
+  },
+  {
+    "team": "Freio de Mão",
+    "points_acceleration": 10,
+    "points_top_speed": 40,
+    "points_handling": 5,
+    "points_braking": 40,
+    "points_tires": 5,
+    "acceleration_curve": "top_end_power",
+    "appearance": {
+      "body": {
+        "color": "#b5179e",
+        "front": {
+          "shape": "pointed"
+        },
+        "middle": {
+          "shape": "waisted"
+        },
+        "rear": {
+          "shape": "flat"
+        }
+      },
+      "pattern": {
+        "style": "none",
+        "color": "#ffd6ff"
+      },
+      "number": {
+        "value": 42
+      }
+    }
+  },
+  {
+    "team": "Última Hora",
+    "points_acceleration": 20,
+    "points_top_speed": 25,
+    "points_handling": 0,
+    "points_braking": 50,
+    "points_tires": 5,
+    "acceleration_curve": "linear",
+    "appearance": {
+      "body": {
+        "color": "#7209b7",
+        "front": {
+          "shape": "round"
+        },
+        "middle": {
+          "shape": "bulge"
+        },
+        "rear": {
+          "shape": "round"
+        }
+      },
+      "pattern": {
+        "style": "dots",
+        "color": "#f1c0e8"
+      },
+      "number": {
+        "value": 43
+      }
+    }
+  },
+  {
+    "team": "Aranha",
+    "points_acceleration": 15,
+    "points_top_speed": 15,
+    "points_handling": 45,
+    "points_braking": 15,
+    "points_tires": 10,
+    "acceleration_curve": "low_end_torque",
+    "appearance": {
+      "body": {
+        "color": "#2a9d8f",
+        "front": {
+          "shape": "chamfer"
+        },
+        "middle": {
+          "shape": "waisted"
+        },
+        "rear": {
+          "shape": "rounded_corners"
+        }
+      },
+      "pattern": {
+        "style": "none",
+        "color": "#e9c46a"
+      },
+      "number": {
+        "value": 32
+      }
+    }
+  },
+  {
+    "team": "Gato",
+    "points_acceleration": 20,
+    "points_top_speed": 10,
+    "points_handling": 50,
+    "points_braking": 10,
+    "points_tires": 10,
+    "acceleration_curve": "linear",
+    "appearance": {
+      "body": {
+        "color": "#06d6a0",
+        "front": {
+          "shape": "round"
+        },
+        "middle": {
+          "shape": "rect"
+        },
+        "rear": {
+          "shape": "round"
+        }
+      },
+      "pattern": {
+        "style": "center",
+        "color": "#073b4c"
+      },
+      "number": {
+        "value": 31
+      }
+    }
+  },
+  {
+    "team": "Slalom",
+    "points_acceleration": 10,
+    "points_top_speed": 20,
+    "points_handling": 50,
+    "points_braking": 10,
+    "points_tires": 10,
+    "acceleration_curve": "top_end_power",
+    "appearance": {
+      "body": {
+        "color": "#80ed99",
+        "front": {
+          "shape": "rounded_corners"
+        },
+        "middle": {
+          "shape": "bulge"
+        },
+        "rear": {
+          "shape": "pointed"
+        }
+      },
+      "pattern": {
+        "style": "side",
+        "color": "#22577a"
+      },
+      "number": {
+        "value": 33
+      }
+    }
+  },
+  {
+    "team": "Fôlego",
+    "points_acceleration": 10,
+    "points_top_speed": 20,
+    "points_handling": 10,
+    "points_braking": 10,
+    "points_tires": 50,
+    "acceleration_curve": "top_end_power",
+    "appearance": {
+      "body": {
+        "color": "#90be6d",
+        "front": {
+          "shape": "flat"
+        },
+        "middle": {
+          "shape": "bulge"
+        },
+        "rear": {
+          "shape": "chamfer"
+        }
+      },
+      "pattern": {
+        "style": "side",
+        "color": "#264653"
+      },
+      "number": {
+        "value": 53
+      }
+    }
+  },
+  {
+    "team": "Maratona",
+    "points_acceleration": 15,
+    "points_top_speed": 15,
+    "points_handling": 10,
+    "points_braking": 10,
+    "points_tires": 50,
+    "acceleration_curve": "linear",
+    "appearance": {
+      "body": {
+        "color": "#ffbe0b",
+        "front": {
+          "shape": "chamfer"
+        },
+        "middle": {
+          "shape": "rect"
+        },
+        "rear": {
+          "shape": "rounded_corners"
+        }
+      },
+      "pattern": {
+        "style": "center",
+        "color": "#222222"
+      },
+      "number": {
+        "value": 51
+      }
+    }
+  },
+  {
+    "team": "Resistente",
+    "points_acceleration": 10,
+    "points_top_speed": 20,
+    "points_handling": 15,
+    "points_braking": 15,
+    "points_tires": 40,
+    "acceleration_curve": "linear",
+    "appearance": {
+      "body": {
+        "color": "#fb8500",
+        "front": {
+          "shape": "rounded_corners"
+        },
+        "middle": {
+          "shape": "waisted"
+        },
+        "rear": {
+          "shape": "pointed"
+        }
+      },
+      "pattern": {
+        "style": "none",
+        "color": "#ffffff"
+      },
+      "number": {
+        "value": 52
+      }
+    }
+  },
+  {
+    "team": "Bala",
+    "points_acceleration": 10,
+    "points_top_speed": 50,
+    "points_handling": 10,
+    "points_braking": 25,
+    "points_tires": 5,
+    "acceleration_curve": "top_end_power",
+    "appearance": {
+      "body": {
+        "color": "#4361ee",
+        "front": {
+          "shape": "flat"
+        },
+        "middle": {
+          "shape": "waisted"
+        },
+        "rear": {
+          "shape": "chamfer"
+        }
+      },
+      "pattern": {
+        "style": "none",
+        "color": "#caf0f8"
+      },
+      "number": {
+        "value": 22
+      }
+    }
+  },
+  {
+    "team": "Flecha",
+    "points_acceleration": 25,
+    "points_top_speed": 45,
+    "points_handling": 5,
+    "points_braking": 15,
+    "points_tires": 10,
+    "acceleration_curve": "linear",
+    "appearance": {
+      "body": {
+        "color": "#4cc9f0",
+        "front": {
+          "shape": "pointed"
+        },
+        "middle": {
+          "shape": "bulge"
+        },
+        "rear": {
+          "shape": "flat"
+        }
+      },
+      "pattern": {
+        "style": "dots",
+        "color": "#03045e"
+      },
+      "number": {
+        "value": 23
+      }
+    }
+  },
+  {
+    "team": "Míssil",
+    "points_acceleration": 20,
+    "points_top_speed": 50,
+    "points_handling": 5,
+    "points_braking": 20,
+    "points_tires": 5,
+    "acceleration_curve": "top_end_power",
+    "appearance": {
+      "body": {
+        "color": "#3a86ff",
+        "front": {
+          "shape": "rounded_corners"
+        },
+        "middle": {
+          "shape": "rect"
+        },
+        "rear": {
+          "shape": "pointed"
+        }
+      },
+      "pattern": {
+        "style": "checker",
+        "color": "#ffffff"
+      },
+      "number": {
+        "value": 21
+      }
+    }
+  }
+]

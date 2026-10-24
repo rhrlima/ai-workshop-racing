@@ -83,4 +83,4 @@ Regras gerais:
 
 ### 7.9 Renderização
 
-- Módulo de referência: [`car-renderer.js`](../car-renderer.js), veja [`car-renderer.md`](car-renderer.md).
+- Módulo de referência: [`car-renderer.js`](../client/car-renderer.js), veja [`car-renderer.md`](car-renderer.md).

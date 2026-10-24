@@ -22,6 +22,8 @@ import json
 import random
 import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import time
+from collections import deque
 from threading import Lock
 
 import physics
@@ -32,6 +34,39 @@ MAX_BODY = 16 * 1024
 MAX_TEAMS = 64
 MAX_FRAMES = 3000
 MAX_RANDOM = 50
+RATE_WINDOW = 60                       # segundos
+RATE_LIMIT_GENERAL = 120               # POSTs por janela, por IP
+RATE_LIMIT_HEAVY = 60                  # POSTs pesados por janela, por IP
+HEAVY_PATHS = {"/race", "/simulate"}
+
+
+class RateLimiter:
+    """Janela deslizante em memória, por chave (IP + categoria)."""
+
+    def __init__(self, window):
+        self.window = window
+        self.hits = {}
+        self.lock = Lock()
+        self.last_prune = time.monotonic()
+
+    def check(self, key, limit):
+        """Retorna 0 se permitido; senão, segundos até poder tentar de novo."""
+        now = time.monotonic()
+        with self.lock:
+            if now - self.last_prune > self.window:
+                for k in [k for k, q in self.hits.items() if not q or now - q[-1] > self.window]:
+                    del self.hits[k]
+                self.last_prune = now
+            q = self.hits.setdefault(key, deque())
+            while q and now - q[0] > self.window:
+                q.popleft()
+            if len(q) >= limit:
+                return max(1, int(self.window - (now - q[0])) + 1)
+            q.append(now)
+            return 0
+
+
+LIMITER = RateLimiter(RATE_WINDOW)
 TEAMS = {}
 OWNERS = {}            # team -> IP de origem (usado no modo --no-multi-tabs)
 SETTINGS = {"multi_tabs": True}
@@ -54,9 +89,15 @@ def render_info(car):
 
 
 class Handler(BaseHTTPRequestHandler):
-    def _send(self, code, obj):
+    def _client_ip(self):
+        fwd = self.headers.get("X-Forwarded-For", "")
+        return fwd.split(",")[0].strip() or self.client_address[0]
+
+    def _send(self, code, obj, headers=None):
         body = json.dumps(obj, ensure_ascii=False).encode()
         self.send_response(code)
+        for k, v in (headers or {}).items():
+            self.send_header(k, v)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Content-Length", str(len(body)))
@@ -107,6 +148,11 @@ class Handler(BaseHTTPRequestHandler):
             self._send(404, {"error": "não encontrado"})
 
     def do_POST(self):
+        heavy = self.path in HEAVY_PATHS
+        retry = LIMITER.check((self._client_ip(), heavy), RATE_LIMIT_HEAVY if heavy else RATE_LIMIT_GENERAL)
+        if retry:
+            return self._send(429, {"error": f"muitas requisições; tente novamente em {retry}s"},
+                              {"Retry-After": str(retry)})
         try:
             data = self._read_json()
             if self.path == "/car":

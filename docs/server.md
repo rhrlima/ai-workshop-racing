@@ -5,14 +5,14 @@ Servidor Python que valida os carros (guardrails), simula a corrida em ticks de 
 ## Executando
 
 ```bash
-cd server-simulation
+cd server
 python3 main.py                       # http://localhost:8765
 python3 main.py --port 9000
 python3 main.py --host 0.0.0.0        # aceita clientes de outras máquinas da rede
 python3 main.py --no-multi-tabs       # um carro por cliente (IP); novo envio do mesmo IP substitui o anterior
 python3 main.py --random-cars 10      # já inicia com 10 carros aleatórios
 python3 main.py --demo --track speedway   # corrida de exemplo no console e sai
-python3 sample_cars.py                # envia 15 carros de exemplo (3 por atributo)
+python3 sample_cars.py                # envia os 15 carros de sample_cars.json (3 por atributo)
 ```
 
 - Corrida: <http://localhost:8765/> (ou `/race.html`)
@@ -36,7 +36,7 @@ Todas as respostas são JSON (UTF-8), com CORS aberto (`Access-Control-Allow-Ori
 
 ### `POST /car`
 
-Registra um carro. O corpo segue o [contrato do carro](docs/car-contract.md) (formato canônico `points_*` ou o JSON da garagem).
+Registra um carro. O corpo segue o [contrato do carro](car-contract.md) (formato canônico `points_*` ou o JSON da garagem).
 
 ```bash
 curl -X POST localhost:8765/car -d '{
@@ -70,7 +70,7 @@ curl -X POST localhost:8765/simulate -d '{"car": {"team": "Alpha", "points_accel
 
 | Campo | Tipo | Padrão | Descrição |
 |---|---|---|---|
-| `car` | objeto | obrigatório | carro no [contrato](docs/car-contract.md); passa pelas mesmas validações de `/car` |
+| `car` | objeto | obrigatório | carro no [contrato](car-contract.md); passa pelas mesmas validações de `/car` |
 | `track` | string | opcional: se omitida, **sorteia uma pista** | chave de `/tracks` |
 | `laps` | inteiro 1–20 | opcional: voltas padrão da pista | número de voltas |
 
@@ -146,6 +146,10 @@ Resposta `200`:
 - Erros `400`: `{"accepted": false, "error": "..."}` para pista desconhecida, `laps` inválido ou nenhuma equipe registrada.
 
 As corridas rodam uma de cada vez (o servidor imprime a telemetria no console, a menos que `quiet` seja `true`).
+
+## Limite de requisições
+
+Por IP do cliente (usa `X-Forwarded-For` quando presente), só em `POST`: **60/min** no geral e **10/min** para `/race` e `/simulate`. Ao exceder, responde `429` com o header `Retry-After` (segundos). `GET` não é limitado. Constantes `RATE_*` em `main.py`.
 
 ## Modelo de simulação (resumo)
 
