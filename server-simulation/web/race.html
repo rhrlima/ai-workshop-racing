@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Garagem — Corrida</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #race-main { display: grid; grid-template-columns: 1fr 360px; gap: 12px; padding: 12px; }
+    #race-canvas { width: 100%; margin: 0; }
+    #board, .board { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .board td, #board td { padding: 6px 4px; border-bottom: 1px solid #333; }
+    .swatch { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: middle; margin-right: 6px; border: 1px solid #fff4; }
+    #toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+    #toolbar input, #toolbar select { background: #111; color: inherit; border: 1px solid #444; border-radius: 4px; padding: 6px; width: auto; }
+    #race-msg { margin-top: 8px; color: #ff7b7b; font-size: 13px; }
+    .panel { max-height: calc(100vh - 80px); }
+    #clock { font-family: monospace; font-size: 18px; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <header><h1>🏁 Corrida</h1></header>
+  <div id="race-main">
+    <section class="panel">
+      <div id="toolbar">
+        <input id="api" size="24">
+        <select id="track-select"></select>
+        <label>Voltas <input id="laps" type="number" min="1" max="20" step="1" style="width:60px"></label>
+        <button id="random-btn" type="button" title="Substituir os carros por 10 aleatórios (teste)">🎲</button>
+        <button id="clear-btn" type="button" title="Resetar o servidor: remover todos os carros">🗑</button>
+        <button id="run-btn" type="button">Correr</button>
+        <button id="play-btn" type="button">⏯</button>
+        <button id="restart-btn" type="button">⏮</button>
+        <select id="speed">
+          <option value="4" selected>1×</option><option value="8">2×</option><option value="16">4×</option><option value="32">8×</option>
+        </select>
+      </div>
+      <canvas id="race-canvas" width="900" height="560"></canvas>
+    </section>
+    <section class="panel">
+      <h2 id="race-title">Classificação</h2>
+      <p id="track-info" style="font-size:13px;color:#aaa;margin-top:0"></p>
+      <div id="clock">00:00.0</div>
+      <table id="board"></table>
+      <div id="race-msg"></div>
+    </section>
+  </div>
+  <script src="car-renderer.js"></script>
+  <script src="race.js"></script>
+</body>
+</html>
